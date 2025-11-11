@@ -513,11 +513,63 @@
         transform: none;
     }
 
-    /* Make interactions more obvious */
+    /* Make interactions more obvious with better feedback */
     .system-card:active,
     .hardware-item:active,
     .lab-image:active {
+        opacity: 0.7;
+        transform: scale(0.96);
+        transition: all 0.1s ease;
+    }
+
+    /* Better button feedback */
+    button:active,
+    .hero-cta:active,
+    .close-room:active,
+    .detail-link:active {
         opacity: 0.8;
-        transform: scale(0.98);
+        transform: scale(0.95);
+        transition: all 0.1s ease;
+    }
+
+    /* Navigation link feedback */
+    .nav-links a:active {
+        color: var(--accent-cyan);
+        transform: scale(0.95);
+    }
+
+    /* Back to top button feedback */
+    .back-to-top:active {
+        transform: scale(0.9) translateY(-3px);
+    }
+
+    /* Modal close feedback */
+    .modal-close:active {
+        transform: rotate(90deg) scale(0.9);
+    }
+
+    /* Improve scrolling performance */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Larger tap targets for modal elements */
+    .modal-close {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Better spacing for touch */
+    .system-grid,
+    .hardware-showcase,
+    .lab-gallery {
+        gap: 1.5rem;
+    }
+
+    /* Prevent accidental zoom on input focus */
+    input,
+    select,
+    textarea {
+        font-size: 16px;
     }
 }

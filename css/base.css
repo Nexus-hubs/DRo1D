@@ -16,6 +16,9 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     letter-spacing: 0.1em;
+    -webkit-tap-highlight-color: rgba(0, 240, 255, 0.3);
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
 }
 
 /* Skip Link for Accessibility */
@@ -91,4 +94,111 @@ body {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+/* Mobile UX Enhancements */
+@media (max-width: 768px) {
+    /* Prevent double-tap zoom on buttons */
+    button,
+    a,
+    .system-card,
+    .hardware-item,
+    .lab-image,
+    .close-room,
+    .detail-link,
+    .modal-close,
+    .back-to-top {
+        touch-action: manipulation;
+    }
+
+    /* Better text selection on mobile */
+    .card-description,
+    .content-block p,
+    .modal-body {
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
+    /* Prevent text selection on interactive elements */
+    .system-card,
+    .hardware-item,
+    .lab-image,
+    button {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}
+
+/* Audio Enable Prompt */
+.audio-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid var(--accent-cyan);
+    padding: 2rem;
+    z-index: 10000;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.audio-prompt.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.audio-prompt h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+    letter-spacing: 0.15em;
+}
+
+.audio-prompt p {
+    color: #B0B0B0;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.audio-prompt button {
+    background: var(--accent-cyan);
+    color: var(--bg-black);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+.audio-prompt button:hover,
+.audio-prompt button:active {
+    background: var(--text-white);
+    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+    .audio-prompt {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .audio-prompt h3 {
+        font-size: 1rem;
+    }
+
+    .audio-prompt p {
+        font-size: 0.85rem;
+    }
+
+    .audio-prompt button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.85rem;
+    }
 }
