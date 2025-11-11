@@ -14,8 +14,7 @@
 .page-dimmer {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.8);
     opacity: 0;
     pointer-events: none;
     z-index: 999;
@@ -32,8 +31,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.98);
     z-index: 1000;
     padding: 1.5rem 5%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -215,7 +213,6 @@ section {
 
 section.dimmed {
     opacity: 0.3;
-    filter: blur(2px);
 }
 
 .section-container {
@@ -693,8 +690,7 @@ section.dimmed {
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.95);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -809,7 +805,7 @@ footer {
     right: 3rem;
     width: 60px;
     height: 60px;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     border: 2px solid var(--accent-cyan);
     color: var(--accent-cyan);
     font-family: 'Orbitron', monospace;
@@ -822,7 +818,6 @@ footer {
     pointer-events: none;
     transition: var(--transition-smooth);
     z-index: 1000;
-    backdrop-filter: blur(10px);
 }
 
 .back-to-top.visible {

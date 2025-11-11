@@ -1,5 +1,6 @@
 /* Responsive Design */
 
+/* Tablet landscape and small desktops */
 @media (max-width: 1024px) {
     .hero-title {
         font-size: 4rem;
@@ -17,36 +18,506 @@
     .data-flow {
         grid-template-columns: 1fr;
     }
+
+    /* Adjust navigation padding */
+    nav {
+        padding: 1rem 3%;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        gap: 2rem;
+    }
+
+    /* Adjust section padding */
+    section {
+        padding: 6rem 3%;
+    }
 }
 
+/* Tablet portrait and larger phones */
 @media (max-width: 768px) {
+    /* Typography adjustments */
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 0.1em;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        letter-spacing: 0.15em;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 3rem;
+    }
+
+    /* Navigation improvements */
+    nav {
+        padding: 1rem 5%;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
     .nav-links {
         gap: 1.5rem;
         font-size: 0.85rem;
     }
 
-    .hero-title {
-        font-size: 3rem;
+    .nav-links a {
+        padding: 0.5rem 0.8rem;
     }
 
-    .section-title {
-        font-size: 2.5rem;
+    /* Section adjustments */
+    section {
+        min-height: auto;
+        padding: 5rem 5%;
+    }
+
+    /* Grid layouts */
+    .system-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 3rem;
     }
 
     .hardware-showcase,
     .lab-gallery {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
+    /* Cards */
+    .system-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Modal */
     .modal-panel {
         padding: 2rem;
+        width: 95%;
+        max-height: 90vh;
     }
 
+    .modal-title {
+        font-size: 1.2rem;
+    }
+
+    /* Back to top button */
     .back-to-top {
         width: 50px;
         height: 50px;
         bottom: 2rem;
         right: 2rem;
         font-size: 1.2rem;
+    }
+
+    /* Deep room adjustments */
+    .room-header {
+        font-size: 0.85rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .close-room {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .content-block {
+        padding: 1.5rem;
+    }
+
+    .content-block h4 {
+        font-size: 1rem;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        font-size: 0.65rem;
+        top: 4.5rem;
+    }
+
+    /* AI image */
+    .ai-image {
+        height: 300px;
+    }
+
+    .ai-text h2 {
+        font-size: 2rem;
+    }
+
+    /* Lab images */
+    .lab-image {
+        height: 300px;
+    }
+
+    .lab-caption {
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    /* Typography */
+    .hero-title {
+        font-size: 2rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+        padding: 0.8rem 2rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        letter-spacing: 0.1em;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 2rem;
+    }
+
+    /* Navigation - Stack or hamburger style */
+    nav {
+        padding: 0.8rem 4%;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 0.75rem;
+    }
+
+    .nav-links a {
+        padding: 0.4rem 0.6rem;
+    }
+
+    /* Sections */
+    section {
+        padding: 4rem 4%;
+    }
+
+    /* Cards */
+    .system-card,
+    .hardware-item {
+        padding: 2rem 1rem;
+    }
+
+    .card-title,
+    .hardware-name {
+        font-size: 1.2rem;
+    }
+
+    .card-description,
+    .hardware-spec {
+        font-size: 0.85rem;
+    }
+
+    .card-icon {
+        font-size: 2.5rem;
+    }
+
+    .hardware-number {
+        font-size: 3rem;
+    }
+
+    /* System grid */
+    .system-grid {
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    /* Hardware showcase */
+    .hardware-showcase {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    /* Lab gallery */
+    .lab-gallery {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .lab-image {
+        height: 250px;
+    }
+
+    .lab-caption {
+        font-size: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+    }
+
+    /* AI Section */
+    .ai-content {
+        gap: 2rem;
+    }
+
+    .ai-image {
+        height: 250px;
+    }
+
+    .ai-text h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .ai-text h2::after {
+        font-size: 0.5rem;
+    }
+
+    .ai-text p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    /* Deep rooms */
+    .room-header {
+        font-size: 0.7rem;
+        padding-bottom: 0.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .room-content {
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .content-block {
+        padding: 1rem;
+    }
+
+    .content-block h4 {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .content-block p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .detail-link {
+        font-size: 0.7rem;
+    }
+
+    .close-room {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Data flow */
+    .flow-step {
+        padding: 1rem;
+    }
+
+    .flow-step .step-number {
+        font-size: 1.5rem;
+    }
+
+    .flow-step .step-label {
+        font-size: 0.8rem;
+    }
+
+    .flow-step .step-desc {
+        font-size: 0.75rem;
+    }
+
+    /* Modal */
+    .modal-panel {
+        padding: 1.5rem;
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .modal-title {
+        font-size: 1rem;
+    }
+
+    .modal-close {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    .modal-body {
+        font-size: 0.85rem;
+    }
+
+    .modal-body h3 {
+        font-size: 1rem;
+        margin: 1.5rem 0 0.8rem 0;
+    }
+
+    .modal-body .code-block {
+        font-size: 0.75rem;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        font-size: 0.6rem;
+        top: 4rem;
+        left: 4%;
+    }
+
+    /* Back to top */
+    .back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 4%;
+        font-size: 0.75rem;
+    }
+
+    /* Hero section height adjustment */
+    .hero {
+        min-height: 100vh;
+        padding: 0 4%;
+    }
+
+    /* Deep indicator */
+    .section-title .deep-indicator {
+        font-size: 0.7rem;
+        margin-left: 0.5rem;
+    }
+}
+
+/* Small mobile phones */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        padding: 0.6rem 3%;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .modal-panel {
+        padding: 1rem;
+    }
+
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 6rem 4% 4rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 1.5rem;
+    }
+
+    section {
+        min-height: auto;
+        padding: 4rem 4%;
+    }
+
+    .modal-panel {
+        max-height: 95vh;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch target sizes */
+    .nav-links a,
+    .system-card,
+    .hardware-item,
+    .lab-image,
+    .close-room,
+    .detail-link,
+    .modal-close,
+    .back-to-top {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Remove hover effects on touch devices */
+    .system-card:hover,
+    .hardware-item:hover,
+    .lab-image:hover {
+        transform: none;
+    }
+
+    /* Make interactions more obvious */
+    .system-card:active,
+    .hardware-item:active,
+    .lab-image:active {
+        opacity: 0.8;
+        transform: scale(0.98);
     }
 }
