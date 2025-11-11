@@ -193,5 +193,30 @@ DEPLOYMENT_DATE: 2025-11-11
 
             <p>Complete system state backed up to encrypted storage. Remote support infrastructure provisioned and validated. Unit cleared for operational deployment.</p>
         `
+    },
+    'site-info': {
+        title: 'SYSTEM ⟡ INFORMATION',
+        content: `
+            <h3>About DRo1D 2.0.1</h3>
+            <p>DRo1D is an advanced multilayer interface showcasing neural engine architecture, AI core processing, hardware specifications, and laboratory development environments.</p>
+
+            <h3>Navigation Guide</h3>
+            <p><strong>Layer 1:</strong> Main sections - SYSTEM, AI CORE, HARDWARE, LAB</p>
+            <p><strong>Layer 2:</strong> Deep view - Click any card to explore detailed subsystems</p>
+            <p><strong>Layer 3:</strong> Modal details - Select "VIEW" links for technical specifications</p>
+
+            <h3>Controls</h3>
+            <div class="code-block">
+🔊 SOUND: Toggle audio feedback
+ℹ️ INFO: Display this information panel
+↑: Scroll to top
+ESC: Close current layer
+            </div>
+
+            <h3>Experience</h3>
+            <p>This interface features immersive particle effects, responsive audio feedback, and smooth multilayer navigation. Optimized for both desktop and mobile devices.</p>
+
+            <p class="accent">© 2025 DRo1D Labs • Version 2.0.1</p>
+        `
     }
 };

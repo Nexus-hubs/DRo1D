@@ -202,3 +202,48 @@ body {
         font-size: 0.85rem;
     }
 }
+
+/* UI Control Buttons */
+.ui-controls {
+    position: fixed;
+    z-index: 9998;
+    pointer-events: none;
+}
+
+.ui-control-btn {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-white);
+    padding: 0.8rem 1.2rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 9998;
+    pointer-events: auto;
+    display: none;
+}
+
+.ui-control-btn:hover {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.ui-control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Sound Off Button */
+#soundOffBtn {
+    bottom: 2rem;
+    left: 2rem;
+}
+
+/* Show Info Button */
+#showInfoBtn {
+    bottom: 2rem;
+    right: 2rem;
+}
