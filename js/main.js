@@ -22,8 +22,8 @@ class DRo1DApp {
         this.audioSystem = new AudioSystem();
         this.layerSystem = new LayerSystem(this.audioSystem, this.particleSystem);
 
-        // Initialize audio on first user interaction
-        document.addEventListener('click', () => this.audioSystem.init(), { once: true });
+        // Setup audio prompt for mobile
+        this.setupAudioPrompt();
 
         // Setup scroll-based features
         this.setupScrollReveal();
@@ -39,6 +39,59 @@ class DRo1DApp {
 
         // Initial reveal check
         this.revealOnScroll();
+    }
+
+    setupAudioPrompt() {
+        // Detect if mobile device
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        // Create audio prompt (especially important for mobile)
+        const audioPromptHTML = `
+            <div class="audio-prompt" id="audioPrompt">
+                <h3>🔊 ENABLE AUDIO</h3>
+                <p>Experience DRo1D with immersive sound effects</p>
+                <button id="enableAudioBtn">ACTIVATE SOUND</button>
+            </div>
+        `;
+
+        // Add to DOM
+        document.body.insertAdjacentHTML('beforeend', audioPromptHTML);
+        const audioPrompt = document.getElementById('audioPrompt');
+        const enableAudioBtn = document.getElementById('enableAudioBtn');
+
+        // Show prompt after a short delay
+        setTimeout(() => {
+            audioPrompt.classList.add('active');
+        }, 1000);
+
+        // Enable audio on button click
+        enableAudioBtn.addEventListener('click', () => {
+            this.audioSystem.init();
+
+            // Play startup sound
+            setTimeout(() => {
+                this.audioSystem.startup();
+            }, 100);
+
+            // Hide prompt
+            audioPrompt.classList.remove('active');
+            setTimeout(() => {
+                audioPrompt.remove();
+            }, 300);
+
+            // Trigger startup particles
+            const rect = enableAudioBtn.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            this.particleSystem.createBurst(x, y, 50, '#00F0FF');
+        });
+
+        // Also init audio on any click (fallback)
+        document.addEventListener('click', (e) => {
+            if (e.target !== enableAudioBtn && !this.audioSystem.initialized) {
+                this.audioSystem.init();
+            }
+        }, { once: true });
     }
 
     setupScrollReveal() {

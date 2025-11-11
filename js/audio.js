@@ -88,6 +88,46 @@ export class AudioSystem {
         setTimeout(() => this.playSound('sine', 1100, 0.12), 120);
     }
 
+    // Immersive startup sound sequence
+    startup() {
+        if (!this.enabled || !this.audioCtx || prefersReducedMotion()) return;
+
+        // Deep bass pulse
+        this.playSound('sine', 100, 0.3);
+
+        // Rising harmonic sequence
+        setTimeout(() => this.playSound('sine', 200, 0.25), 100);
+        setTimeout(() => this.playSound('sine', 400, 0.2), 200);
+        setTimeout(() => this.playSound('sine', 600, 0.18), 300);
+        setTimeout(() => this.playSound('sine', 800, 0.15), 400);
+
+        // High frequency sparkle
+        setTimeout(() => this.playSound('sine', 1200, 0.1), 500);
+        setTimeout(() => this.playSound('sine', 1600, 0.08), 550);
+        setTimeout(() => this.playSound('sine', 2000, 0.06), 600);
+
+        // Final resolution chord
+        setTimeout(() => {
+            this.playSound('sine', 400, 0.4);
+            this.playSound('sine', 600, 0.4);
+            this.playSound('sine', 900, 0.4);
+        }, 700);
+    }
+
+    // Power-up sound for mobile activation
+    powerUp() {
+        if (!this.enabled || !this.audioCtx || prefersReducedMotion()) return;
+
+        const now = this.audioCtx.currentTime;
+
+        // Create a sweep from low to high
+        for (let i = 0; i < 10; i++) {
+            const frequency = 200 + (i * 100);
+            const delay = i * 0.05;
+            setTimeout(() => this.playSound('sine', frequency, 0.08), delay * 1000);
+        }
+    }
+
     // Suspend audio context to save resources
     suspend() {
         if (this.audioCtx && this.audioCtx.state === 'running') {
