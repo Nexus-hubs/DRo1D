@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DRo1D 2.0.1 - Advanced multilayer interface showcasing neural engine, AI core, hardware specifications, and laboratory development environment.">
+    <meta name="keywords" content="DRo1D, AI, robotics, neural engine, hardware, machine learning">
+    <meta name="author" content="DRo1D Labs">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="DRo1D 2.0.1 ⟡ Multilayer Interface">
+    <meta property="og:description" content="Advanced multilayer interface showcasing neural engine, AI core, and hardware specifications.">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="DRo1D">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DRo1D 2.0.1 ⟡ Multilayer Interface">
+    <meta name="twitter:description" content="Advanced multilayer interface showcasing neural engine, AI core, and hardware specifications.">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <title>DRo1D 2.0.1 ⟡ Multilayer Interface</title>
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+    <!-- Page Dimmer -->
+    <div class="page-dimmer" id="pageDimmer" aria-hidden="true"></div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+        DRo1D <span aria-hidden="true">⟡</span> <span id="breadcrumbPath"></span>
+    </nav>
+
+    <!-- Main Navigation -->
+    <nav id="mainNav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="logo" aria-label="DRo1D 2.0.1">DRo1D 2.0.1 <span aria-hidden="true">⟡</span></div>
+            <ul class="nav-links">
+                <li><a href="#system" data-section="system">SYSTEM</a></li>
+                <li><a href="#ai-core" data-section="ai-core">AI CORE</a></li>
+                <li><a href="#hardware" data-section="hardware">HARDWARE</a></li>
+                <li><a href="#lab" data-section="lab">LAB</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main" role="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <h1 class="hero-title" id="hero-title">DRo1D 2.0.1</h1>
+            <p class="hero-subtitle">MULTILAYER • PRECISION • DEPTH</p>
+            <a href="#system" class="hero-cta">INITIALIZE SYSTEM</a>
+        </section>
+
+        <!-- SYSTEM Section -->
+        <section id="system" aria-labelledby="system-title">
+            <div class="section-container reveal">
+                <h2 class="section-title" id="system-title">
+                    SYSTEM
+                    <span class="deep-indicator" id="systemDeepIndicator" aria-live="polite">· DEEP VIEW</span>
+                </h2>
+                <p class="section-subtitle">Core Architecture</p>
+
+                <div class="system-grid">
+                    <div class="system-card" data-room="neural-engine">
+                        <div class="card-icon" aria-hidden="true">⟡</div>
+                        <h3 class="card-title">NEURAL ENGINE</h3>
+                        <p class="card-description">Advanced computational matrix processing with real-time decision pathways and adaptive learning protocols.</p>
+                    </div>
+
+                    <div class="system-card" data-room="sensor-array">
+                        <div class="card-icon" aria-hidden="true">◈</div>
+                        <h3 class="card-title">SENSOR ARRAY</h3>
+                        <p class="card-description">Multi-spectrum detection grid combining optical, thermal, and spatial awareness in unified datastream.</p>
+                    </div>
+
+                    <div class="system-card" data-room="power-core">
+                        <div class="card-icon" aria-hidden="true">✦</div>
+                        <h3 class="card-title">POWER CORE</h3>
+                        <p class="card-description">Efficient energy distribution system with redundant failsafes and extended operational capacity.</p>
+                    </div>
+                </div>
+
+                <!-- Layer 2: Deep Rooms for SYSTEM -->
+                <div class="deep-room" id="neural-engine-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>SYSTEM <span aria-hidden="true">⟡</span> NEURAL ENGINE <span aria-hidden="true">⟡</span> DEEP VIEW</span>
+                        <span class="close-room" data-close="neural-engine-room">CLOSE DEEP VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>ARCHITECTURE</h4>
+                            <p>The Neural Engine operates on a hierarchical processing model with 12 parallel computation layers. Each layer specializes in distinct pattern recognition tasks, from low-level signal processing to high-level decision synthesis.</p>
+                            <p>Memory pathways are dynamically allocated based on task priority, ensuring critical operations maintain consistent response times even under maximum cognitive load.</p>
+                            <span class="detail-link" data-modal="neural-architecture">VIEW ARCHITECTURE MAP</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>LEARNING PROTOCOL</h4>
+                            <p>Adaptive algorithms continuously refine neural weights through reinforcement cycles. The system implements a hybrid approach combining supervised training datasets with real-time environmental feedback.</p>
+                            <p>Error correction occurs at microsecond intervals, with validation gates preventing corrupted patterns from propagating through the network.</p>
+                            <span class="detail-link" data-modal="learning-protocol">VIEW LEARNING LOGS</span>
+                        </div>
+                    </div>
+                    <div class="data-flow">
+                        <div class="flow-step">
+                            <div class="step-number" aria-hidden="true">01</div>
+                            <div class="step-label">INPUT</div>
+                            <div class="step-desc">Sensor data streams enter preprocessing buffers</div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number" aria-hidden="true">02</div>
+                            <div class="step-label">PROCESS</div>
+                            <div class="step-desc">Multi-layer neural computation and pattern matching</div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-number" aria-hidden="true">03</div>
+                            <div class="step-label">OUTPUT</div>
+                            <div class="step-desc">Decision signals routed to actuator control systems</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="sensor-array-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>SYSTEM <span aria-hidden="true">⟡</span> SENSOR ARRAY <span aria-hidden="true">⟡</span> DEEP VIEW</span>
+                        <span class="close-room" data-close="sensor-array-room">CLOSE DEEP VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>DETECTION SPECTRUM</h4>
+                            <p>The array integrates 47 discrete sensors across visual, infrared, ultrasonic, and electromagnetic ranges. Each sensor cluster operates independently while contributing to a unified spatial awareness model.</p>
+                            <p>Redundant cross-validation ensures single-sensor failures do not compromise overall perception accuracy.</p>
+                            <span class="detail-link" data-modal="sensor-map">VIEW SENSOR MAP</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>DATA FUSION</h4>
+                            <p>Raw sensor signals undergo real-time fusion algorithms that combine multiple data streams into coherent environmental representations. Temporal filtering reduces noise while preserving critical rapid-change detection.</p>
+                            <p>The fusion layer outputs at 120Hz, providing smooth continuous awareness for downstream systems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="power-core-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>SYSTEM <span aria-hidden="true">⟡</span> POWER CORE <span aria-hidden="true">⟡</span> DEEP VIEW</span>
+                        <span class="close-room" data-close="power-core-room">CLOSE DEEP VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>ENERGY DISTRIBUTION</h4>
+                            <p>High-density battery cells provide 8 hours of continuous operation under standard load. Power management circuits dynamically allocate energy based on subsystem priority hierarchies.</p>
+                            <p>Critical systems maintain dedicated power rails with instant failover to backup cells in case of primary circuit failure.</p>
+                            <span class="detail-link" data-modal="power-diagram">VIEW POWER DIAGRAM</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>THERMAL MANAGEMENT</h4>
+                            <p>Active cooling systems maintain optimal operating temperatures across all components. Heat sensors trigger graduated response protocols, from passive dissipation to active fluid cooling under extreme load.</p>
+                            <p>Thermal profiling predicts hotspot formation before critical thresholds are reached.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI CORE Section -->
+        <section id="ai-core" aria-labelledby="ai-core-title">
+            <div class="section-container reveal">
+                <div class="ai-content">
+                    <div class="ai-image"
+                         data-bg="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80"
+                         role="img"
+                         aria-label="AI Core visualization"></div>
+                    <div class="ai-text">
+                        <h2 id="aiCoreTitle">AI CORE</h2>
+                        <p>The intelligence layer operates through crystalline logic pathways, executing millions of calculations in parallel streams. Each decision point is weighted, analyzed, and verified through multiple validation gates.</p>
+                        <p>This is not simulated intelligence — this is operational consciousness, trained on real-world complexity and optimized for precision response.</p>
+                        <p>The system learns continuously, refining its models with every interaction, building toward perfect execution.</p>
+                    </div>
+                </div>
+
+                <!-- Layer 2: AI CORE Deep Room -->
+                <div class="deep-room" id="ai-core-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>AI CORE <span aria-hidden="true">⟡</span> INTERNAL LOGIC <span aria-hidden="true">⟡</span> DEEP VIEW</span>
+                        <span class="close-room" data-close="ai-core-room">CLOSE DEEP VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>INPUT LAYER</h4>
+                            <p>Sensory streams from multiple sources converge into normalized input buffers. Data validation occurs at ingress points, filtering corrupt or anomalous signals before they enter processing pipelines.</p>
+                            <p>Priority queues ensure time-critical inputs bypass standard processing delays, maintaining real-time responsiveness for safety-critical operations.</p>
+                            <span class="detail-link" data-modal="input-pipeline">VIEW INPUT PIPELINE</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>PROCESSING CORE</h4>
+                            <p>Decision trees branch through parallel evaluation pathways, with each node representing a distinct decision gate. Confidence scoring weights alternative paths, allowing the system to maintain multiple hypothesis threads simultaneously.</p>
+                            <p>Validation loops cross-check outputs against expected patterns, triggering re-evaluation cycles when confidence thresholds are not met.</p>
+                            <span class="detail-link" data-modal="decision-tree">VIEW DECISION TREE</span>
+                        </div>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>OUTPUT LAYER</h4>
+                            <p>Finalized decisions translate into actuation commands routed to hardware interfaces. Rate limiting prevents command flooding, while priority escalation allows emergency overrides to preempt standard operations.</p>
+                            <p>All output signals are logged for post-operation analysis and continuous model refinement.</p>
+                        </div>
+                        <div class="content-block">
+                            <h4>FEEDBACK MECHANISM</h4>
+                            <p>Outcome monitoring compares predicted results against actual system responses. Divergence triggers learning cycles that adjust internal model parameters, progressively improving accuracy over operational lifetime.</p>
+                            <p>The feedback loop operates continuously, ensuring the AI evolves with its environment.</p>
+                            <span class="detail-link" data-modal="feedback-system">VIEW FEEDBACK SYSTEM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HARDWARE Section -->
+        <section id="hardware" aria-labelledby="hardware-title">
+            <div class="section-container reveal">
+                <h2 class="section-title" id="hardware-title">
+                    HARDWARE
+                    <span class="deep-indicator" id="hardwareDeepIndicator" aria-live="polite">· DEEP VIEW</span>
+                </h2>
+                <p class="section-subtitle">Physical Infrastructure</p>
+
+                <div class="hardware-showcase">
+                    <div class="hardware-item" data-room="processor-room">
+                        <div class="hardware-number" aria-hidden="true">01</div>
+                        <div class="hardware-name">PROCESSOR</div>
+                        <div class="hardware-spec">Quantum-Ready Architecture</div>
+                    </div>
+
+                    <div class="hardware-item" data-room="memory-room">
+                        <div class="hardware-number" aria-hidden="true">02</div>
+                        <div class="hardware-name">MEMORY</div>
+                        <div class="hardware-spec">Adaptive Storage Matrix</div>
+                    </div>
+
+                    <div class="hardware-item" data-room="actuators-room">
+                        <div class="hardware-number" aria-hidden="true">03</div>
+                        <div class="hardware-name">ACTUATORS</div>
+                        <div class="hardware-spec">Precision Motion Control</div>
+                    </div>
+
+                    <div class="hardware-item" data-room="optics-room">
+                        <div class="hardware-number" aria-hidden="true">04</div>
+                        <div class="hardware-name">OPTICS</div>
+                        <div class="hardware-spec">Multi-Wavelength Sensors</div>
+                    </div>
+
+                    <div class="hardware-item" data-room="chassis-room">
+                        <div class="hardware-number" aria-hidden="true">05</div>
+                        <div class="hardware-name">CHASSIS</div>
+                        <div class="hardware-spec">Carbon-Composite Frame</div>
+                    </div>
+
+                    <div class="hardware-item" data-room="interface-room">
+                        <div class="hardware-number" aria-hidden="true">06</div>
+                        <div class="hardware-name">INTERFACE</div>
+                        <div class="hardware-spec">Haptic Feedback System</div>
+                    </div>
+                </div>
+
+                <!-- Layer 2: Hardware Deep Rooms -->
+                <div class="deep-room" id="processor-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>HARDWARE <span aria-hidden="true">⟡</span> PROCESSOR <span aria-hidden="true">⟡</span> SPECIFICATIONS</span>
+                        <span class="close-room" data-close="processor-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>ARCHITECTURE</h4>
+                            <p>64-core heterogeneous processor architecture combining high-performance computational cores with energy-efficient specialized processing units. Dynamic frequency scaling maintains optimal performance-per-watt ratios across varying workloads.</p>
+                            <p>Integrated neural acceleration units provide hardware-level support for AI inference operations, reducing latency by 10x compared to software implementations.</p>
+                            <span class="detail-link" data-modal="processor-arch">VIEW CORE LAYOUT</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>PERFORMANCE METRICS</h4>
+                            <p>Peak computational throughput: 12 TFLOPS sustained, 18 TFLOPS burst. Memory bandwidth: 512 GB/s. Cache hierarchy: 2MB L1, 32MB L2, 128MB L3.</p>
+                            <p>Thermal design power: 95W nominal, 120W maximum with active cooling engaged.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="memory-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>HARDWARE <span aria-hidden="true">⟡</span> MEMORY <span aria-hidden="true">⟡</span> SPECIFICATIONS</span>
+                        <span class="close-room" data-close="memory-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>STORAGE LAYERS</h4>
+                            <p>Triple-tier storage architecture: 32GB high-speed SRAM for active processing, 512GB DRAM for working memory, 4TB NVMe solid-state for persistent storage.</p>
+                            <p>Intelligent caching algorithms predict data access patterns, pre-loading likely requests into faster tiers before they are needed.</p>
+                        </div>
+                        <div class="content-block">
+                            <h4>DATA INTEGRITY</h4>
+                            <p>ECC protection across all memory layers ensures data corruption is detected and corrected in real-time. RAID-equivalent redundancy on persistent storage provides protection against hardware failure.</p>
+                            <p>Automated scrubbing routines verify data integrity during idle cycles.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="actuators-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>HARDWARE <span aria-hidden="true">⟡</span> ACTUATORS <span aria-hidden="true">⟡</span> SPECIFICATIONS</span>
+                        <span class="close-room" data-close="actuators-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>MOTION SYSTEMS</h4>
+                            <p>24 degrees of freedom distributed across articulated joints. High-torque brushless motors provide precise position control with sub-millimeter accuracy. Encoder feedback loops maintain position lock even under external force.</p>
+                        </div>
+                        <div class="content-block">
+                            <h4>CONTROL INTERFACE</h4>
+                            <p>Real-time servo control operates at 1kHz update rate, ensuring smooth coordinated motion across all joints. Motion planning algorithms generate optimal trajectories that minimize energy consumption while maintaining speed targets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="optics-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>HARDWARE <span aria-hidden="true">⟡</span> OPTICS <span aria-hidden="true">⟡</span> SPECIFICATIONS</span>
+                        <span class="close-room" data-close="optics-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>VISUAL SENSORS</h4>
+                            <p>Stereo camera arrays provide depth perception with 0.1mm resolution at 1m distance. HDR imaging captures detail across 20-stop dynamic range, enabling operation in both bright sunlight and near-total darkness.</p>
+                        </div>
+                        <div class="content-block">
+                            <h4>SPECTRAL RANGE</h4>
+                            <p>Multi-wavelength sensors span from ultraviolet through visible spectrum into thermal infrared. Specialized filters enable material identification and thermal profiling of objects in the environment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="chassis-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>HARDWARE <span aria-hidden="true">⟡</span> CHASSIS <span aria-hidden="true">⟡</span> SPECIFICATIONS</span>
+                        <span class="close-room" data-close="chassis-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>STRUCTURAL DESIGN</h4>
+                            <p>Carbon fiber composite construction provides exceptional strength-to-weight ratio. Modular design allows field replacement of damaged sections without complete disassembly.</p>
+                        </div>
+                        <div class="content-block">
+                            <h4>PROTECTION</h4>
+                            <p>IP67 environmental sealing protects internal components from dust and water ingress. Impact-resistant panels shield critical systems from mechanical damage during operation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="interface-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>HARDWARE <span aria-hidden="true">⟡</span> INTERFACE <span aria-hidden="true">⟡</span> SPECIFICATIONS</span>
+                        <span class="close-room" data-close="interface-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>COMMUNICATION</h4>
+                            <p>Multi-protocol wireless transceivers support WiFi 6E, Bluetooth 5.3, and custom mesh networking. Wired interfaces include USB-C, Ethernet, and CAN bus for industrial integration.</p>
+                        </div>
+                        <div class="content-block">
+                            <h4>HAPTICS</h4>
+                            <p>Force feedback actuators provide tactile response during object manipulation. Impedance control allows the system to simulate material properties, providing intuitive interaction feedback.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAB Section -->
+        <section id="lab" aria-labelledby="lab-title">
+            <div class="section-container reveal">
+                <h2 class="section-title" id="lab-title">
+                    LAB
+                    <span class="deep-indicator" id="labDeepIndicator" aria-live="polite">· DEEP VIEW</span>
+                </h2>
+                <p class="section-subtitle">Development Environment</p>
+
+                <div class="lab-gallery">
+                    <div class="lab-image"
+                         style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80');"
+                         data-room="assembly-room"
+                         role="img"
+                         aria-label="Assembly phase">
+                        <div class="lab-caption">ASSEMBLY</div>
+                    </div>
+
+                    <div class="lab-image"
+                         style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80');"
+                         data-room="testing-room"
+                         role="img"
+                         aria-label="Testing phase">
+                        <div class="lab-caption">TESTING</div>
+                    </div>
+
+                    <div class="lab-image"
+                         style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80');"
+                         data-room="calibration-room"
+                         role="img"
+                         aria-label="Calibration phase">
+                        <div class="lab-caption">CALIBRATION</div>
+                    </div>
+
+                    <div class="lab-image"
+                         style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80');"
+                         data-room="deployment-room"
+                         role="img"
+                         aria-label="Deployment phase">
+                        <div class="lab-caption">DEPLOYMENT</div>
+                    </div>
+                </div>
+
+                <!-- Layer 2: LAB Deep Rooms -->
+                <div class="deep-room" id="assembly-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>LAB <span aria-hidden="true">⟡</span> ASSEMBLY <span aria-hidden="true">⟡</span> PHASE OVERVIEW</span>
+                        <span class="close-room" data-close="assembly-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>COMPONENT INTEGRATION</h4>
+                            <p>The assembly phase brings together individually tested subsystems into the complete DRo1D platform. Precision alignment jigs ensure mechanical tolerances are maintained within 0.05mm across all interface points.</p>
+                            <p>Each connection undergoes electrical continuity testing and signal integrity validation before permanent fastening.</p>
+                            <span class="detail-link" data-modal="assembly-checklist">VIEW ASSEMBLY CHECKLIST</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>QUALITY CONTROL</h4>
+                            <p>Visual inspection identifies cosmetic defects and potential stress points. X-ray imaging verifies internal solder joints and connector seating. Final dimensional measurement confirms the assembled unit matches CAD specifications.</p>
+                            <p>Any anomalies trigger disassembly and component-level diagnosis before reassembly attempts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="testing-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>LAB <span aria-hidden="true">⟡</span> TESTING <span aria-hidden="true">⟡</span> PHASE OVERVIEW</span>
+                        <span class="close-room" data-close="testing-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>FUNCTIONAL VALIDATION</h4>
+                            <p>Comprehensive test suites exercise every system function under controlled conditions. Sensor accuracy is validated against calibrated reference standards. Actuator performance is measured for speed, precision, and repeatability.</p>
+                            <p>AI processing undergoes benchmark evaluations to confirm inference speed and accuracy meet design targets.</p>
+                            <span class="detail-link" data-modal="test-protocols">VIEW TEST PROTOCOLS</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>STRESS TESTING</h4>
+                            <p>Environmental chambers subject the system to temperature extremes, humidity variation, and vibration profiles that exceed expected operational conditions. Sustained maximum-load testing verifies thermal management and power delivery remain stable under worst-case scenarios.</p>
+                            <p>Long-duration endurance runs identify infant mortality failures before units ship.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="calibration-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>LAB <span aria-hidden="true">⟡</span> CALIBRATION <span aria-hidden="true">⟡</span> PHASE OVERVIEW</span>
+                        <span class="close-room" data-close="calibration-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>SENSOR CALIBRATION</h4>
+                            <p>Each sensor undergoes individual calibration against traceable reference standards. Camera systems are aligned to ensure stereo correspondence accuracy. IMU bias and scale factors are measured and corrected.</p>
+                            <p>Calibration parameters are stored in non-volatile memory, remaining associated with each sensor throughout the system's operational life.</p>
+                            <span class="detail-link" data-modal="calibration-data">VIEW CALIBRATION DATA</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>MOTION CALIBRATION</h4>
+                            <p>Kinematic models are refined through measured motion sequences. Joint backlash, friction, and compliance are characterized and compensated through control algorithm tuning.</p>
+                            <p>The calibration process repeats until motion accuracy consistently meets specification across the full range of motion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deep-room" id="deployment-room" aria-hidden="true">
+                    <div class="room-header">
+                        <span>LAB <span aria-hidden="true">⟡</span> DEPLOYMENT <span aria-hidden="true">⟡</span> PHASE OVERVIEW</span>
+                        <span class="close-room" data-close="deployment-room">CLOSE VIEW</span>
+                    </div>
+                    <div class="room-content">
+                        <div class="content-block">
+                            <h4>FINAL VALIDATION</h4>
+                            <p>A complete system checkout verifies all previous testing and calibration remains valid. Documentation packages are generated, including calibration certificates, test results, and configuration files.</p>
+                            <p>The system receives its unique serial identifier and is registered in the deployment database.</p>
+                            <span class="detail-link" data-modal="deployment-log">VIEW DEPLOYMENT LOG</span>
+                        </div>
+                        <div class="content-block">
+                            <h4>DELIVERY PREPARATION</h4>
+                            <p>Protective packaging shields the system during transport. Quick-start guides and operational documentation are included. Remote support credentials are provisioned and tested.</p>
+                            <p>Final system state is backed up to secure storage, enabling restoration if field issues require factory reset.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>DRo1D 2.0.1 <span aria-hidden="true">⟡</span> MULTILAYER INTERFACE © 2025</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">
+        <span class="arrow" aria-hidden="true">↑</span>
+    </button>
+
+    <!-- Layer 3: Modal -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">MODAL TITLE</h3>
+                <button class="modal-close" id="modalClose" aria-label="Close modal">
+                    <span aria-hidden="true">✕</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
