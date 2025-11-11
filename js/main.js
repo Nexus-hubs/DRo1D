@@ -44,51 +44,55 @@ class DRo1DApp {
     setupAudioPrompt() {
         // Detect if mobile device
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-        // Create audio prompt (especially important for mobile)
-        const audioPromptHTML = `
-            <div class="audio-prompt" id="audioPrompt">
-                <h3>🔊 ENABLE AUDIO</h3>
-                <p>Experience DRo1D with immersive sound effects</p>
-                <button id="enableAudioBtn">ACTIVATE SOUND</button>
-            </div>
-        `;
+        // Only show audio prompt on actual mobile devices
+        if (isMobile && isTouchDevice) {
+            // Create audio prompt (mobile only)
+            const audioPromptHTML = `
+                <div class="audio-prompt" id="audioPrompt">
+                    <h3>🔊 ENABLE AUDIO</h3>
+                    <p>Experience DRo1D with immersive sound effects</p>
+                    <button id="enableAudioBtn">ACTIVATE SOUND</button>
+                </div>
+            `;
 
-        // Add to DOM
-        document.body.insertAdjacentHTML('beforeend', audioPromptHTML);
-        const audioPrompt = document.getElementById('audioPrompt');
-        const enableAudioBtn = document.getElementById('enableAudioBtn');
+            // Add to DOM
+            document.body.insertAdjacentHTML('beforeend', audioPromptHTML);
+            const audioPrompt = document.getElementById('audioPrompt');
+            const enableAudioBtn = document.getElementById('enableAudioBtn');
 
-        // Show prompt after a short delay
-        setTimeout(() => {
-            audioPrompt.classList.add('active');
-        }, 1000);
-
-        // Enable audio on button click
-        enableAudioBtn.addEventListener('click', () => {
-            this.audioSystem.init();
-
-            // Play startup sound
+            // Show prompt after a short delay
             setTimeout(() => {
-                this.audioSystem.startup();
-            }, 100);
+                audioPrompt.classList.add('active');
+            }, 1000);
 
-            // Hide prompt
-            audioPrompt.classList.remove('active');
-            setTimeout(() => {
-                audioPrompt.remove();
-            }, 300);
+            // Enable audio on button click
+            enableAudioBtn.addEventListener('click', () => {
+                this.audioSystem.init();
 
-            // Trigger startup particles
-            const rect = enableAudioBtn.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-            this.particleSystem.createBurst(x, y, 50, '#00F0FF');
-        });
+                // Play startup sound (only on mobile)
+                setTimeout(() => {
+                    this.audioSystem.startup();
+                }, 100);
 
-        // Also init audio on any click (fallback)
-        document.addEventListener('click', (e) => {
-            if (e.target !== enableAudioBtn && !this.audioSystem.initialized) {
+                // Hide prompt
+                audioPrompt.classList.remove('active');
+                setTimeout(() => {
+                    audioPrompt.remove();
+                }, 300);
+
+                // Trigger startup particles (smaller burst for performance)
+                const rect = enableAudioBtn.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                this.particleSystem.createBurst(x, y, 30, '#00F0FF');
+            });
+        }
+
+        // Desktop: Initialize audio on first interaction without prompt
+        document.addEventListener('click', () => {
+            if (!this.audioSystem.initialized) {
                 this.audioSystem.init();
             }
         }, { once: true });
@@ -114,11 +118,18 @@ class DRo1DApp {
         const hero = document.getElementById('hero');
         if (!hero) return;
 
+        // Disable parallax on mobile for better performance
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) return;
+
         const parallaxEffect = throttle(() => {
             const scrolled = window.pageYOffset;
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            hero.style.opacity = 1 - scrolled / 700;
-        }, 16); // ~60fps
+            // Only apply parallax when hero is visible
+            if (scrolled < hero.clientHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - scrolled / 700;
+            }
+        }, 32); // ~30fps for better performance
 
         window.addEventListener('scroll', parallaxEffect);
     }
@@ -181,7 +192,7 @@ class DRo1DApp {
         // Scroll to top functionality
         backToTop.addEventListener('click', () => {
             this.audioSystem.open();
-            triggerParticles(this.particleSystem, backToTop, '#00F0FF', 30);
+            triggerParticles(this.particleSystem, backToTop, '#00F0FF', 12);
 
             window.scrollTo({
                 top: 0,
@@ -203,80 +214,80 @@ class DRo1DApp {
     }
 
     setupInteractiveElements() {
-        // System cards
+        // System cards - reduced particles for performance
         const systemCards = document.querySelectorAll('.system-card');
         systemCards.forEach(card => {
             card.addEventListener('mouseenter', () => this.audioSystem.hover());
             card.addEventListener('click', function() {
-                triggerParticles(this.particleSystem, this, '#00F0FF', 20);
+                triggerParticles(this.particleSystem, this, '#00F0FF', 8);
             }.bind(this));
         });
 
-        // Hardware items
+        // Hardware items - reduced particles
         const hardwareItems = document.querySelectorAll('.hardware-item');
         hardwareItems.forEach(item => {
             item.addEventListener('mouseenter', () => this.audioSystem.hover());
             item.addEventListener('click', function() {
-                triggerParticles(this.particleSystem, this, '#FF0033', 20);
+                triggerParticles(this.particleSystem, this, '#FF0033', 8);
             }.bind(this));
         });
 
-        // Lab images
+        // Lab images - reduced particles
         const labImages = document.querySelectorAll('.lab-image');
         labImages.forEach(image => {
             image.addEventListener('mouseenter', () => this.audioSystem.hover());
             image.addEventListener('click', function() {
-                triggerParticles(this.particleSystem, this, '#00F0FF', 25);
+                triggerParticles(this.particleSystem, this, '#00F0FF', 10);
             }.bind(this));
         });
 
-        // AI Core title
+        // AI Core title - reduced particles
         const aiCoreTitle = document.getElementById('aiCoreTitle');
         if (aiCoreTitle) {
             aiCoreTitle.addEventListener('mouseenter', () => this.audioSystem.hover());
             aiCoreTitle.addEventListener('click', function() {
-                triggerParticles(this.particleSystem, this, '#00F0FF', 20);
+                triggerParticles(this.particleSystem, this, '#00F0FF', 8);
             }.bind(this));
         }
 
-        // Close room buttons
+        // Close room buttons - minimal particles
         document.querySelectorAll('.close-room').forEach(button => {
             button.addEventListener('click', function() {
-                triggerParticles(this.particleSystem, this, '#FFFFFF', 15);
+                triggerParticles(this.particleSystem, this, '#FFFFFF', 6);
             }.bind(this));
         });
 
-        // Detail links
+        // Detail links - reduced particles
         document.querySelectorAll('.detail-link').forEach(link => {
             link.addEventListener('click', function(e) {
-                triggerParticles(this.particleSystem, e.target, '#00F0FF', 30);
+                triggerParticles(this.particleSystem, e.target, '#00F0FF', 10);
             }.bind(this));
         });
 
-        // Modal close
+        // Modal close - minimal particles
         const modalClose = document.getElementById('modalClose');
         if (modalClose) {
             modalClose.addEventListener('click', function() {
-                triggerParticles(this.particleSystem, this, '#FFFFFF', 20);
+                triggerParticles(this.particleSystem, this, '#FFFFFF', 8);
             }.bind(this));
         }
 
-        // Hero CTA
+        // Hero CTA - reduced particles
         const heroCta = document.querySelector('.hero-cta');
         if (heroCta) {
             heroCta.addEventListener('mouseenter', () => this.audioSystem.hover());
             heroCta.addEventListener('click', function() {
                 this.audioSystem.click();
-                triggerParticles(this.particleSystem, this, '#FFFFFF', 25);
+                triggerParticles(this.particleSystem, this, '#FFFFFF', 12);
             }.bind(this));
         }
 
-        // Nav links
+        // Nav links - minimal particles
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('mouseenter', () => this.audioSystem.hover());
             link.addEventListener('click', function() {
                 this.audioSystem.click();
-                triggerParticles(this.particleSystem, this, '#00F0FF', 12);
+                triggerParticles(this.particleSystem, this, '#00F0FF', 5);
             }.bind(this));
         });
     }
