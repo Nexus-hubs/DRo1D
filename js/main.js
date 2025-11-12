@@ -25,6 +25,11 @@ class DRo1DApp {
         // Setup audio prompt for mobile
         this.setupAudioPrompt();
 
+        // Setup new UI controls
+        this.setupSoundToggle();
+        this.setupInfoToggle();
+        this.setupMessageBox();
+
         // Setup scroll-based features
         this.setupScrollReveal();
         this.setupParallax();
@@ -211,6 +216,97 @@ class DRo1DApp {
                 backToTop.click();
             }
         });
+    }
+
+    setupSoundToggle() {
+        const soundToggle = document.getElementById('soundToggle');
+        const soundIcon = document.getElementById('soundIcon');
+        if (!soundToggle) return;
+
+        let isMuted = false;
+
+        soundToggle.addEventListener('click', () => {
+            isMuted = !isMuted;
+
+            if (isMuted) {
+                this.audioSystem.suspend();
+                soundToggle.classList.add('muted');
+                soundToggle.setAttribute('aria-label', 'Sound muted - click to unmute');
+            } else {
+                this.audioSystem.resume();
+                this.audioSystem.success();
+                soundToggle.classList.remove('muted');
+                soundToggle.setAttribute('aria-label', 'Sound on - click to mute');
+            }
+
+            triggerParticles(this.particleSystem, soundToggle, '#00F0FF', 10);
+        });
+
+        // Ensure audio is initialized on first click
+        soundToggle.addEventListener('click', () => {
+            if (!this.audioSystem.initialized) {
+                this.audioSystem.init();
+            }
+        }, { once: true });
+    }
+
+    setupInfoToggle() {
+        const infoToggle = document.getElementById('infoToggle');
+        const messageBox = document.getElementById('messageBox');
+        if (!infoToggle || !messageBox) return;
+
+        infoToggle.addEventListener('click', () => {
+            const isActive = messageBox.classList.contains('active');
+
+            if (isActive) {
+                messageBox.classList.remove('active');
+                this.audioSystem.close();
+            } else {
+                messageBox.classList.add('active');
+                this.audioSystem.open();
+                this.audioSystem.notification();
+            }
+
+            triggerParticles(this.particleSystem, infoToggle, '#FF0033', 12);
+        });
+    }
+
+    setupMessageBox() {
+        const messageBox = document.getElementById('messageBox');
+        const messageClose = document.getElementById('messageClose');
+        if (!messageBox || !messageClose) return;
+
+        messageClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            messageBox.classList.remove('active');
+            this.audioSystem.close();
+            triggerParticles(this.particleSystem, messageClose, '#00F0FF', 8);
+        });
+
+        // Update system status dynamically
+        this.updateSystemStatus();
+        setInterval(() => this.updateSystemStatus(), 5000);
+    }
+
+    updateSystemStatus() {
+        const messageContent = document.getElementById('messageContent');
+        if (!messageContent) return;
+
+        const statuses = ['ONLINE', 'ACTIVE', 'OPTIMAL', 'OPERATIONAL'];
+        const systems = [
+            'Neural Engine',
+            'Sensor Array',
+            'Power Core',
+            'AI Core'
+        ];
+
+        let html = '';
+        systems.forEach((system, index) => {
+            const status = statuses[index];
+            html += `<p><span class="status-indicator">●</span> ${system}: ${status}</p>`;
+        });
+
+        messageContent.innerHTML = html;
     }
 
     setupInteractiveElements() {

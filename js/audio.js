@@ -128,6 +128,55 @@ export class AudioSystem {
         }
     }
 
+    // Ambient background loop for immersive experience
+    ambient() {
+        if (!this.enabled || !this.audioCtx || prefersReducedMotion()) return;
+
+        // Low frequency ambient pulse
+        this.playSound('sine', 80, 0.5);
+        setTimeout(() => this.playSound('sine', 120, 0.5), 250);
+        setTimeout(() => this.playSound('sine', 100, 0.5), 500);
+    }
+
+    // UI interaction sounds
+    success() {
+        this.playSound('sine', 800, 0.1);
+        setTimeout(() => this.playSound('sine', 1000, 0.1), 80);
+        setTimeout(() => this.playSound('sine', 1200, 0.15), 160);
+    }
+
+    error() {
+        this.playSound('square', 200, 0.15);
+        setTimeout(() => this.playSound('square', 180, 0.15), 100);
+    }
+
+    notification() {
+        this.playSound('sine', 1000, 0.08);
+        setTimeout(() => this.playSound('sine', 1500, 0.1), 100);
+    }
+
+    // Deep bass hit
+    impact() {
+        this.playSound('sine', 60, 0.3);
+        setTimeout(() => this.playSound('sine', 80, 0.2), 50);
+    }
+
+    // Scanning sound effect
+    scan() {
+        for (let i = 0; i < 8; i++) {
+            const freq = 300 + (i * 150);
+            setTimeout(() => this.playSound('sawtooth', freq, 0.04), i * 60);
+        }
+    }
+
+    // Whoosh sound for transitions
+    whoosh() {
+        for (let i = 0; i < 6; i++) {
+            const freq = 1000 - (i * 100);
+            setTimeout(() => this.playSound('sine', freq, 0.05), i * 30);
+        }
+    }
+
     // Suspend audio context to save resources
     suspend() {
         if (this.audioCtx && this.audioCtx.state === 'running') {
