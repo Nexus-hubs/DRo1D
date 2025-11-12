@@ -73,6 +73,10 @@
     <main id="main" role="main">
         <!-- Hero Section -->
         <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="hero-bg-images">
+                <div class="hero-splash" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80');" aria-hidden="true"></div>
+                <div class="hero-splash" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80');" aria-hidden="true"></div>
+            </div>
             <h1 class="hero-title" id="hero-title">DRo1D 2.0.1</h1>
             <p class="hero-subtitle">MULTILAYER • PRECISION • DEPTH</p>
             <a href="#system" class="hero-cta">INITIALIZE SYSTEM</a>
@@ -80,6 +84,7 @@
 
         <!-- SYSTEM Section -->
         <section id="system" aria-labelledby="system-title">
+            <div class="section-bg-image" style="background-image: url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1200&q=80');" aria-hidden="true"></div>
             <div class="section-container reveal">
                 <h2 class="section-title" id="system-title">
                     SYSTEM
@@ -243,6 +248,7 @@
 
         <!-- HARDWARE Section -->
         <section id="hardware" aria-labelledby="hardware-title">
+            <div class="section-bg-image" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80');" aria-hidden="true"></div>
             <div class="section-container reveal">
                 <h2 class="section-title" id="hardware-title">
                     HARDWARE
@@ -534,6 +540,30 @@
     <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">
         <span class="arrow" aria-hidden="true">↑</span>
     </button>
+
+    <!-- Sound Toggle Button (Lower Left on Mobile) -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+        <span class="sound-icon" id="soundIcon">🔊</span>
+    </button>
+
+    <!-- Show Info Button (Lower Right on Mobile) -->
+    <button class="info-toggle" id="infoToggle" aria-label="Show information">
+        <span class="info-icon">ⓘ</span>
+    </button>
+
+    <!-- Message Box (Middle Left on Mobile) -->
+    <div class="message-box" id="messageBox">
+        <div class="message-header">
+            <span class="message-title">SYSTEM STATUS</span>
+            <button class="message-close" id="messageClose" aria-label="Close message">✕</button>
+        </div>
+        <div class="message-content" id="messageContent">
+            <p><span class="status-indicator">●</span> Neural Engine: ONLINE</p>
+            <p><span class="status-indicator">●</span> Sensor Array: ACTIVE</p>
+            <p><span class="status-indicator">●</span> Power Core: OPTIMAL</p>
+            <p><span class="status-indicator">●</span> AI Core: OPERATIONAL</p>
+        </div>
+    </div>
 
     <!-- Layer 3: Modal -->
     <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
