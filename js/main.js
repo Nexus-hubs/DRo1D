@@ -39,6 +39,9 @@ class DRo1DApp {
         // Setup interactive elements
         this.setupInteractiveElements();
 
+        // Setup UI control buttons
+        this.setupUIControls();
+
         // Lazy load images
         lazyLoadImages();
 
@@ -386,6 +389,47 @@ class DRo1DApp {
                 triggerParticles(this.particleSystem, this, '#00F0FF', 5);
             }.bind(this));
         });
+    }
+
+    setupUIControls() {
+        // Sound Off/On Toggle
+        const soundBtn = document.getElementById('soundOffBtn');
+        const soundIcon = document.getElementById('soundIcon');
+
+        if (soundBtn) {
+            soundBtn.addEventListener('click', () => {
+                if (this.audioSystem.enabled) {
+                    this.audioSystem.suspend();
+                    this.audioSystem.enabled = false;
+                    soundIcon.textContent = '🔇';
+                    soundBtn.setAttribute('aria-label', 'Enable sound');
+                } else {
+                    if (!this.audioSystem.initialized) {
+                        this.audioSystem.init();
+                    }
+                    this.audioSystem.resume();
+                    this.audioSystem.enabled = true;
+                    soundIcon.textContent = '🔊';
+                    soundBtn.setAttribute('aria-label', 'Disable sound');
+                    this.audioSystem.click();
+                }
+
+                // Trigger particles
+                triggerParticles(this.particleSystem, soundBtn, '#00F0FF', 8);
+            });
+        }
+
+        // Show Info Button
+        const infoBtn = document.getElementById('showInfoBtn');
+        if (infoBtn) {
+            infoBtn.addEventListener('click', () => {
+                this.audioSystem.modal();
+                triggerParticles(this.particleSystem, infoBtn, '#00F0FF', 8);
+
+                // Open modal with site information
+                this.layerSystem.openModal('site-info');
+            });
+        }
     }
 }
 
