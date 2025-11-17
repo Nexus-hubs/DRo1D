@@ -453,6 +453,49 @@
         font-size: 1rem;
     }
 
+    /* Sound Toggle - Lower Left */
+    .sound-toggle {
+        width: 50px;
+        height: 50px;
+        bottom: 1rem;
+        left: 1rem;
+        font-size: 1.3rem;
+    }
+
+    /* Info Toggle - Lower Right */
+    .info-toggle {
+        width: 50px;
+        height: 50px;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+    }
+
+    /* Message Box - Middle Left */
+    .message-box {
+        width: 260px;
+        left: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .message-header {
+        padding: 0.8rem;
+    }
+
+    .message-title {
+        font-size: 0.8rem;
+    }
+
+    .message-content {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    /* Hero background adjustments */
+    .hero-bg-images {
+        opacity: 0.1;
+    }
+
     /* Footer */
     footer {
         padding: 2rem 4%;
