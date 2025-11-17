@@ -1,0 +1,89 @@
+{
+  "name": "dro1d",
+  "version": "2.0.1",
+  "description": "An immersive, futuristic web experience for next-generation autonomous droid technology",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "dev:watch": "browser-sync start --server --files 'css/*.css, js/*.js, *.html'",
+    "lint": "eslint js/**/*.js",
+    "lint:fix": "eslint js/**/*.js --fix",
+    "format": "prettier --write '**/*.{js,css,html,md}'",
+    "format:check": "prettier --check '**/*.{js,css,html,md}'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "benchmark": "node scripts/benchmark.js",
+    "lighthouse": "lighthouse http://localhost:8000 --view --output html --output-path ./lighthouse-report.html",
+    "a11y": "pa11y http://localhost:8000",
+    "build": "npm run lint && npm run test && npm run format",
+    "validate": "npm run lint && npm run format:check && npm run test",
+    "serve": "serve -s . -l 8000",
+    "analyze": "npx webpack-bundle-analyzer stats.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nexus-hubs/DRo1D.git"
+  },
+  "keywords": [
+    "droid",
+    "robotics",
+    "web-audio",
+    "canvas",
+    "accessibility",
+    "wcag",
+    "es6-modules",
+    "vanilla-js",
+    "responsive-design",
+    "progressive-enhancement"
+  ],
+  "author": "Nexus-hubs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nexus-hubs/DRo1D/issues"
+  },
+  "homepage": "https://github.com/Nexus-hubs/DRo1D#readme",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "browser-sync": "^2.29.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lighthouse": "^11.3.0",
+    "pa11y": "^6.2.3",
+    "prettier": "^3.0.3",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
+  "jest": {
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "js/**/*.js",
+      "!js/**/*.test.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    }
+  }
+}
