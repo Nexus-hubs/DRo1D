@@ -40,10 +40,29 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo glitch" data-text="DRo1D">DRo1D</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loadingBar"></div>
+        </div>
+        <div class="loading-text" id="loadingText">INITIALIZING SYSTEMS...</div>
+    </div>
+
     <!-- Skip Link for Accessibility -->
     <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+
+    <!-- Hex Grid Background -->
+    <div class="hex-grid" aria-hidden="true"></div>
+
+    <!-- Scanlines Overlay -->
+    <div class="scanlines" aria-hidden="true"></div>
 
     <!-- Particle Canvas -->
     <canvas id="particleCanvas" aria-hidden="true"></canvas>
@@ -72,14 +91,40 @@
     <!-- Main Content -->
     <main id="main" role="main">
         <!-- Hero Section -->
-        <section class="hero" id="hero" aria-labelledby="hero-title">
+        <section class="hero hero-enhanced" id="hero" aria-labelledby="hero-title">
+            <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
             <div class="hero-bg-images">
-                <div class="hero-splash" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80');" aria-hidden="true"></div>
-                <div class="hero-splash" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80');" aria-hidden="true"></div>
+                <!-- Futuristic AI/Robot images -->
+                <div class="hero-splash hologram" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80');" aria-hidden="true"></div>
+                <div class="hero-splash hologram" style="background-image: url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&q=80');" aria-hidden="true"></div>
+                <div class="hero-splash hologram" style="background-image: url('https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=1200&q=80');" aria-hidden="true"></div>
+                <div class="hero-splash hologram" style="background-image: url('https://images.unsplash.com/photo-1563207153-f403bf289096?w=1200&q=80');" aria-hidden="true"></div>
             </div>
-            <h1 class="hero-title" id="hero-title">DRo1D 2.0.1</h1>
-            <p class="hero-subtitle">MULTILAYER • PRECISION • DEPTH</p>
-            <a href="#system" class="hero-cta">INITIALIZE SYSTEM</a>
+            <h1 class="hero-title glitch neon-cyan" id="hero-title" data-text="DRo1D 2.0.1">DRo1D 2.0.1</h1>
+            <p class="hero-subtitle neon-pulse">MULTILAYER • PRECISION • DEPTH</p>
+            <a href="#system" class="hero-cta neon-box">INITIALIZE SYSTEM</a>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section" aria-label="System Statistics">
+            <div class="stats-grid">
+                <div class="stat-item cyber-border">
+                    <div class="stat-value" data-target="12">0</div>
+                    <div class="stat-label">TFLOPS Processing</div>
+                </div>
+                <div class="stat-item cyber-border">
+                    <div class="stat-value" data-target="47">0</div>
+                    <div class="stat-label">Sensor Array</div>
+                </div>
+                <div class="stat-item cyber-border">
+                    <div class="stat-value" data-target="24">0</div>
+                    <div class="stat-label">Degrees Freedom</div>
+                </div>
+                <div class="stat-item cyber-border">
+                    <div class="stat-value" data-target="99">0</div>
+                    <div class="stat-label">% Accuracy</div>
+                </div>
+            </div>
         </section>
 
         <!-- SYSTEM Section -->
@@ -529,6 +574,28 @@
                 </div>
             </div>
         </section>
+
+        <!-- Interactive Games Section -->
+        <section class="games-section" id="games" aria-labelledby="games-title">
+            <h2 class="games-title glitch" id="games-title" data-text="NEURAL TRAINING">NEURAL TRAINING</h2>
+            <div class="games-grid">
+                <div class="game-card" data-game="memory" tabindex="0" role="button" aria-label="Play Neural Memory game">
+                    <div class="game-icon">🧠</div>
+                    <div class="game-name">NEURAL MEMORY</div>
+                    <div class="game-description">Calibrate your neural pathways by matching memory patterns</div>
+                </div>
+                <div class="game-card" data-game="reaction" tabindex="0" role="button" aria-label="Play Reflex Calibration game">
+                    <div class="game-icon">⚡</div>
+                    <div class="game-name">REFLEX CALIBRATION</div>
+                    <div class="game-description">Test your reaction speed and response accuracy</div>
+                </div>
+                <div class="game-card" data-game="snake" tabindex="0" role="button" aria-label="Play Data Snake game">
+                    <div class="game-icon">🐍</div>
+                    <div class="game-name">DATA SNAKE</div>
+                    <div class="game-description">Navigate data streams and collect processing nodes</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -589,6 +656,78 @@
     </div>
 
     <!-- JavaScript Modules -->
-    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        import { DRo1DApp } from './js/main.js';
+        import { LoadingScreen, MatrixRain, FloatingParticles, StatsCounter, setupGlitchText, MouseTrail, setupTiltEffect } from './js/effects.js';
+        import GamesManager from './js/games.js';
+
+        // Initialize loading screen
+        const loadingScreen = new LoadingScreen();
+
+        // Simulate loading progress
+        let progress = 0;
+        const loadingInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            loadingScreen.updateProgress(progress);
+
+            if (progress >= 100) {
+                clearInterval(loadingInterval);
+            }
+        }, 200);
+
+        // Initialize app when DOM is ready
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Setup glitch text
+            setupGlitchText();
+
+            // Initialize main app
+            const app = new DRo1DApp();
+
+            // Initialize matrix rain
+            const matrixRain = new MatrixRain();
+            matrixRain.start();
+
+            // Initialize floating particles
+            new FloatingParticles('heroParticles');
+
+            // Initialize stats counter
+            new StatsCounter();
+
+            // Initialize mouse trail (desktop only)
+            new MouseTrail();
+
+            // Setup tilt effect for cards
+            setupTiltEffect();
+
+            // Initialize games manager
+            const gamesManager = new GamesManager(app.audioSystem);
+
+            // Attach game card listeners
+            document.querySelectorAll('.game-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const gameType = card.dataset.game;
+                    gamesManager.openGame(gameType);
+                });
+
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const gameType = card.dataset.game;
+                        gamesManager.openGame(gameType);
+                    }
+                });
+            });
+
+            // Hide loading screen
+            await loadingScreen.hide();
+
+            // Play startup sound
+            if (app.audioSystem) {
+                setTimeout(() => {
+                    app.audioSystem.playSound('startup');
+                }, 300);
+            }
+        });
+    </script>
 </body>
 </html>

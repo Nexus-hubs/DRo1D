@@ -433,9 +433,7 @@ class DRo1DApp {
     }
 }
 
-// Initialize app when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new DRo1DApp());
-} else {
-    new DRo1DApp();
-}
+// Export for use by other modules
+export { DRo1DApp };
+
+// Note: Auto-initialization removed - handled by index.html inline script
