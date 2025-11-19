@@ -1,0 +1,810 @@
+/**
+ * DRo1D Advanced Visual Effects
+ * Glitch, Hologram, Neon, Scanlines, Matrix effects
+ */
+
+/* ═══════════════════════════════════════════════════════════
+   LOADING SCREEN
+   ═══════════════════════════════════════════════════════════ */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--accent-cyan);
+  text-shadow:
+    0 0 10px var(--accent-cyan),
+    0 0 20px var(--accent-cyan),
+    0 0 40px var(--accent-cyan),
+    0 0 80px var(--accent-cyan);
+  animation: loadingPulse 2s ease-in-out infinite;
+  margin-bottom: 2rem;
+}
+
+.loading-bar-container {
+  width: 300px;
+  height: 4px;
+  background: rgba(0, 240, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar {
+  height: 100%;
+  background: var(--accent-cyan);
+  width: 0%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.loading-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  color: var(--accent-cyan);
+  margin-top: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCANLINES OVERLAY
+   ═══════════════════════════════════════════════════════════ */
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  animation: scanlineMove 8s linear infinite;
+}
+
+@keyframes scanlineMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GLITCH EFFECTS
+   ═══════════════════════════════════════════════════════════ */
+
+.glitch {
+  position: relative;
+  animation: glitch 3s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--accent-red);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitchAnim 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--accent-cyan);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitchAnim2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+  0%, 90%, 100% { transform: translate(0); }
+  91% { transform: translate(-2px, 1px); }
+  92% { transform: translate(2px, -1px); }
+  93% { transform: translate(-1px, 2px); }
+  94% { transform: translate(1px, -2px); }
+}
+
+@keyframes glitchAnim {
+  0% { clip: rect(42px, 9999px, 44px, 0); }
+  5% { clip: rect(12px, 9999px, 59px, 0); }
+  10% { clip: rect(48px, 9999px, 29px, 0); }
+  15% { clip: rect(42px, 9999px, 73px, 0); }
+  20% { clip: rect(63px, 9999px, 27px, 0); }
+  25% { clip: rect(34px, 9999px, 55px, 0); }
+  30% { clip: rect(86px, 9999px, 73px, 0); }
+  35% { clip: rect(20px, 9999px, 20px, 0); }
+  40% { clip: rect(26px, 9999px, 60px, 0); }
+  45% { clip: rect(25px, 9999px, 66px, 0); }
+  50% { clip: rect(57px, 9999px, 98px, 0); }
+  55% { clip: rect(5px, 9999px, 46px, 0); }
+  60% { clip: rect(82px, 9999px, 31px, 0); }
+  65% { clip: rect(54px, 9999px, 27px, 0); }
+  70% { clip: rect(28px, 9999px, 99px, 0); }
+  75% { clip: rect(45px, 9999px, 69px, 0); }
+  80% { clip: rect(23px, 9999px, 85px, 0); }
+  85% { clip: rect(54px, 9999px, 84px, 0); }
+  90% { clip: rect(45px, 9999px, 47px, 0); }
+  95% { clip: rect(37px, 9999px, 20px, 0); }
+  100% { clip: rect(4px, 9999px, 91px, 0); }
+}
+
+@keyframes glitchAnim2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); }
+  5% { clip: rect(52px, 9999px, 74px, 0); }
+  10% { clip: rect(79px, 9999px, 85px, 0); }
+  15% { clip: rect(75px, 9999px, 5px, 0); }
+  20% { clip: rect(67px, 9999px, 61px, 0); }
+  25% { clip: rect(14px, 9999px, 79px, 0); }
+  30% { clip: rect(1px, 9999px, 66px, 0); }
+  35% { clip: rect(86px, 9999px, 30px, 0); }
+  40% { clip: rect(23px, 9999px, 98px, 0); }
+  45% { clip: rect(85px, 9999px, 72px, 0); }
+  50% { clip: rect(71px, 9999px, 75px, 0); }
+  55% { clip: rect(2px, 9999px, 48px, 0); }
+  60% { clip: rect(30px, 9999px, 16px, 0); }
+  65% { clip: rect(59px, 9999px, 50px, 0); }
+  70% { clip: rect(41px, 9999px, 62px, 0); }
+  75% { clip: rect(2px, 9999px, 82px, 0); }
+  80% { clip: rect(47px, 9999px, 73px, 0); }
+  85% { clip: rect(3px, 9999px, 27px, 0); }
+  90% { clip: rect(26px, 9999px, 55px, 0); }
+  95% { clip: rect(42px, 9999px, 97px, 0); }
+  100% { clip: rect(38px, 9999px, 49px, 0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HOLOGRAM EFFECT
+   ═══════════════════════════════════════════════════════════ */
+
+.hologram {
+  position: relative;
+  overflow: hidden;
+}
+
+.hologram::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(0, 240, 255, 0.1) 45%,
+    rgba(0, 240, 255, 0.2) 50%,
+    rgba(0, 240, 255, 0.1) 55%,
+    transparent 60%
+  );
+  background-size: 200% 200%;
+  animation: hologramSweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hologramSweep {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEON GLOW EFFECTS
+   ═══════════════════════════════════════════════════════════ */
+
+.neon-cyan {
+  color: var(--accent-cyan);
+  text-shadow:
+    0 0 5px var(--accent-cyan),
+    0 0 10px var(--accent-cyan),
+    0 0 20px var(--accent-cyan),
+    0 0 40px var(--accent-cyan);
+}
+
+.neon-red {
+  color: var(--accent-red);
+  text-shadow:
+    0 0 5px var(--accent-red),
+    0 0 10px var(--accent-red),
+    0 0 20px var(--accent-red),
+    0 0 40px var(--accent-red);
+}
+
+.neon-box {
+  box-shadow:
+    0 0 5px var(--accent-cyan),
+    0 0 10px var(--accent-cyan),
+    0 0 20px var(--accent-cyan),
+    inset 0 0 5px rgba(0, 240, 255, 0.2);
+  border: 1px solid var(--accent-cyan);
+}
+
+.neon-box-red {
+  box-shadow:
+    0 0 5px var(--accent-red),
+    0 0 10px var(--accent-red),
+    0 0 20px var(--accent-red),
+    inset 0 0 5px rgba(255, 0, 51, 0.2);
+  border: 1px solid var(--accent-red);
+}
+
+/* Pulsing neon */
+.neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 5px var(--accent-cyan),
+      0 0 10px var(--accent-cyan),
+      0 0 20px var(--accent-cyan),
+      0 0 40px var(--accent-cyan);
+  }
+  50% {
+    text-shadow:
+      0 0 2px var(--accent-cyan),
+      0 0 5px var(--accent-cyan),
+      0 0 10px var(--accent-cyan),
+      0 0 20px var(--accent-cyan);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MATRIX RAIN CANVAS
+   ═══════════════════════════════════════════════════════════ */
+
+#matrixCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HEX GRID BACKGROUND
+   ═══════════════════════════════════════════════════════════ */
+
+.hex-grid {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2300f0ff' fill-opacity='0.03'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CYBERPUNK BORDERS
+   ═══════════════════════════════════════════════════════════ */
+
+.cyber-border {
+  position: relative;
+  padding: 2rem;
+}
+
+.cyber-border::before,
+.cyber-border::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent-cyan);
+}
+
+.cyber-border::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cyber-border::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TYPING EFFECT
+   ═══════════════════════════════════════════════════════════ */
+
+.typing {
+  overflow: hidden;
+  border-right: 2px solid var(--accent-cyan);
+  white-space: nowrap;
+  animation:
+    typing 3.5s steps(40, end),
+    blinkCaret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkCaret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--accent-cyan); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DATA STREAM ANIMATION
+   ═══════════════════════════════════════════════════════════ */
+
+.data-stream {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-stream::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 240, 255, 0.2) 50%,
+    transparent 100%
+  );
+  animation: dataStream 2s linear infinite;
+}
+
+@keyframes dataStream {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ENHANCED HERO SECTION
+   ═══════════════════════════════════════════════════════════ */
+
+.hero-enhanced {
+  position: relative;
+}
+
+.hero-enhanced::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(255, 0, 51, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  animation: floatParticle 15s infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GAMES SECTION
+   ═══════════════════════════════════════════════════════════ */
+
+.games-section {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.games-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--accent-cyan);
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.game-card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--accent-cyan);
+  border-radius: 8px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 10px 30px rgba(0, 240, 255, 0.3),
+    inset 0 0 20px rgba(0, 240, 255, 0.1);
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 240, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.game-card:hover::before {
+  left: 100%;
+}
+
+.game-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.game-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.game-description {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  color: var(--accent-gray);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Game Modal */
+.game-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.game-modal.active {
+  display: flex;
+}
+
+.game-container {
+  background: #0a0a0a;
+  border: 2px solid var(--accent-cyan);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.game-header h3 {
+  font-family: 'Orbitron', monospace;
+  color: var(--accent-cyan);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.game-close {
+  background: none;
+  border: 1px solid var(--accent-red);
+  color: var(--accent-red);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: 'Orbitron', monospace;
+  transition: all 0.3s ease;
+}
+
+.game-close:hover {
+  background: var(--accent-red);
+  color: #000;
+}
+
+.game-score {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.game-area {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-start-btn {
+  background: var(--accent-cyan);
+  color: #000;
+  border: none;
+  padding: 1rem 2rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.game-start-btn:hover {
+  box-shadow: 0 0 20px var(--accent-cyan);
+  transform: scale(1.05);
+}
+
+/* Memory Game Grid */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  background: #1a1a1a;
+  border: 1px solid var(--accent-cyan);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.memory-card.flipped {
+  background: var(--accent-cyan);
+  color: #000;
+}
+
+.memory-card.matched {
+  background: rgba(0, 240, 255, 0.3);
+  border-color: rgba(0, 240, 255, 0.5);
+  cursor: default;
+}
+
+/* Reaction Game */
+.reaction-target {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 20px var(--accent-red);
+}
+
+.reaction-target.ready {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 30px var(--accent-cyan);
+  animation: reactionPulse 0.3s ease infinite;
+}
+
+@keyframes reactionPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.reaction-result {
+  font-family: 'Orbitron', monospace;
+  font-size: 2rem;
+  color: var(--accent-cyan);
+  margin-top: 1rem;
+}
+
+/* Snake Game */
+.snake-canvas {
+  border: 2px solid var(--accent-cyan);
+  background: #0a0a0a;
+}
+
+.game-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.game-controls button {
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  padding: 0.75rem 1rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.game-controls button:hover {
+  background: var(--accent-cyan);
+  color: #000;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STATS COUNTER
+   ═══════════════════════════════════════════════════════════ */
+
+.stats-section {
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.stat-value {
+  font-family: 'Orbitron', monospace;
+  font-size: 3rem;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 20px var(--accent-cyan);
+}
+
+.stat-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  color: var(--accent-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FLOATING ELEMENTS
+   ═══════════════════════════════════════════════════════════ */
+
+.float-element {
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .loading-logo {
+    font-size: 2.5rem;
+  }
+
+  .games-title {
+    font-size: 1.8rem;
+  }
+
+  .game-container {
+    padding: 1rem;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.3rem;
+  }
+
+  .memory-card {
+    font-size: 1rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanlines,
+  .glitch::before,
+  .glitch::after,
+  .hologram::before,
+  .data-stream::after,
+  .hero-particle,
+  .typing {
+    animation: none;
+  }
+}
