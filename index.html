@@ -79,7 +79,15 @@
     <nav id="mainNav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="logo" aria-label="DRo1D 2.0.1">DRo1D 2.0.1 <span aria-hidden="true">⟡</span></div>
-            <ul class="nav-links">
+
+            <!-- Hamburger Menu Button (Mobile) -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#system" data-section="system">SYSTEM</a></li>
                 <li><a href="#ai-core" data-section="ai-core">AI CORE</a></li>
                 <li><a href="#hardware" data-section="hardware">HARDWARE</a></li>
@@ -87,6 +95,9 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
     <main id="main" role="main">

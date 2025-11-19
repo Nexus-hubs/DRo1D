@@ -1,5 +1,88 @@
 /* Responsive Design */
 
+/* ========================================
+   HAMBURGER MENU & MOBILE NAVIGATION
+   ======================================== */
+
+/* Hamburger Button - Hidden on Desktop */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+}
+
+.hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-white);
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Animation when Active */
+.hamburger-btn.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.hamburger-btn.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ========================================
+   SAFE AREA INSETS (Notched Phones)
+   ======================================== */
+
+/* Support for iOS safe areas */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+
+    .back-to-top,
+    .sound-toggle,
+    .info-toggle {
+        bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+
+    nav {
+        padding-top: max(1rem, env(safe-area-inset-top));
+    }
+}
+
+/* ========================================
+   TABLET LANDSCAPE & SMALL DESKTOPS
+   ======================================== */
+
 /* Tablet landscape and small desktops */
 @media (max-width: 1024px) {
     .hero-title {
@@ -40,6 +123,59 @@
 
 /* Tablet portrait and larger phones */
 @media (max-width: 768px) {
+    /* Show hamburger button */
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .mobile-nav-overlay {
+        display: block;
+    }
+
+    /* Mobile Navigation Drawer */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        padding: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1001;
+        border-left: 1px solid var(--accent-cyan);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1.2rem;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border: none;
+    }
+
+    .nav-links a::before {
+        display: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(0, 240, 255, 0.1);
+    }
+
     /* Typography adjustments */
     .hero-title {
         font-size: 3rem;
@@ -71,13 +207,53 @@
         font-size: 1.3rem;
     }
 
-    .nav-links {
-        gap: 1.5rem;
-        font-size: 0.85rem;
+    /* Stats Section Mobile */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
-    .nav-links a {
-        padding: 0.5rem 0.8rem;
+    .stat-item {
+        padding: 1.5rem 1rem;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    /* Games Section Mobile */
+    .games-section {
+        padding: 4rem 5%;
+    }
+
+    .games-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .game-card {
+        padding: 1.5rem;
+    }
+
+    .game-icon {
+        font-size: 2rem;
+    }
+
+    .game-name {
+        font-size: 1rem;
+    }
+
+    .game-description {
+        font-size: 0.85rem;
     }
 
     /* Section adjustments */
@@ -193,12 +369,12 @@
         font-size: 0.7rem;
     }
 
-    /* Audio Prompt (Message Box) - Middle Left */
+    /* Audio Prompt (Message Box) - Centered */
     .audio-prompt {
         top: 50%;
-        left: 20%;
-        transform: translate(-10%, -50%);
-        width: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 85%;
         max-width: 300px;
         padding: 1.5rem;
     }
@@ -659,5 +835,102 @@
     select,
     textarea {
         font-size: 16px;
+    }
+}
+
+/* ========================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Reduce animations on mobile for better performance */
+@media (max-width: 768px) {
+    /* Disable heavy background effects */
+    #matrixCanvas {
+        display: none !important;
+    }
+
+    .hex-grid {
+        display: none !important;
+    }
+
+    /* Reduce particle canvas opacity for performance */
+    #particleCanvas {
+        opacity: 0.3;
+    }
+
+    /* Simplify hero background animations */
+    .hero-splash {
+        animation-duration: 12s;
+    }
+
+    /* Reduce shimmer effect frequency */
+    .ai-image::after {
+        animation-duration: 6s;
+    }
+
+    /* Optimize scroll performance */
+    .section-container {
+        will-change: auto;
+    }
+
+    /* Simplify card hover effects */
+    .system-card:hover,
+    .hardware-item:hover {
+        transform: none;
+    }
+
+    /* Reduce box shadows for performance */
+    .message-box {
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+}
+
+/* Further optimizations for small mobile */
+@media (max-width: 480px) {
+    /* Hide particle canvas entirely on small screens */
+    #particleCanvas {
+        display: none !important;
+    }
+
+    /* Simplify hero background */
+    .hero-bg-images {
+        opacity: 0.08;
+    }
+
+    .hero-splash:nth-child(2),
+    .hero-splash:nth-child(3),
+    .hero-splash:nth-child(4) {
+        display: none;
+    }
+
+    /* Disable all transform animations */
+    .system-card,
+    .hardware-item,
+    .lab-image {
+        transform: none !important;
+    }
+
+    /* Reduce transition complexity */
+    * {
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* Battery saver - reduce animations when low power mode */
+@media (prefers-reduced-motion: reduce) {
+    #matrixCanvas,
+    #particleCanvas,
+    .hex-grid {
+        display: none !important;
+    }
+
+    .hero-splash,
+    .ai-image::after {
+        animation: none !important;
+    }
+
+    .loading-bar,
+    .status-indicator {
+        animation: none !important;
     }
 }
