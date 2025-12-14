@@ -2,13 +2,14 @@
  * Tests for Logger
  */
 
-import Logger from '../js/logger.js';
+import { Logger } from '../js/logger.js';
 
 describe('Logger', () => {
   let logger;
 
   beforeEach(() => {
     logger = new Logger();
+    logger.level = 0;
     logger.enableConsole = false; // Disable console output for tests
   });
 

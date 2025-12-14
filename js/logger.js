@@ -242,4 +242,5 @@ const logger = new Logger();
 // Log initialization
 logger.info(`Logger initialized (level: ${config.logging.level})`);
 
+export { Logger };
 export default logger;

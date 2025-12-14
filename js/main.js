@@ -29,6 +29,8 @@ class DRo1DApp {
         this.setupSoundToggle();
         this.setupInfoToggle();
         this.setupMessageBox();
+        this.setupThemeToggle();
+        this.initTheme();
 
         // Setup mobile navigation
         this.setupMobileNav();
@@ -327,6 +329,43 @@ class DRo1DApp {
                 this.audioSystem.init();
             }
         }, { once: true });
+    }
+
+    initTheme() {
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        this.applyTheme(savedTheme);
+    }
+
+    applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+            const newLabel = theme === 'dark'
+                ? 'Dark theme enabled - click to switch to light theme'
+                : 'Light theme enabled - click to switch to dark theme';
+            themeToggle.setAttribute('aria-label', newLabel);
+        }
+    }
+
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        this.applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            this.audioSystem.click();
+            triggerParticles(this.particleSystem, themeToggle, '#FFD700', 10);
+        }
+    }
+
+    setupThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (!themeToggle) return;
+
+        themeToggle.addEventListener('click', () => this.toggleTheme());
     }
 
     setupInfoToggle() {
